@@ -1,213 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BoothBiz - Photo Booth Business Management</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth Templates</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fc;
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    }
-    .card {
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .chat-message {
-      border-radius: 18px;
-      max-width: 80%;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-    }
-    .user-message {
-      background-color: #e2e8f0;
-      margin-left: auto;
-      border-top-right-radius: 4px;
-    }
-    .bot-message {
-      background-color: #6366f1;
-      color: white;
-      margin-right: auto;
-      border-top-left-radius: 4px;
-    }
+    body { font-family: sans-serif; margin: 0; padding: 0; }
+    header { background: #fff; padding: 1rem 2rem; border-bottom: 1px solid #ccc; }
+    .container { display: flex; padding: 2rem; }
+    .sidebar { width: 250px; margin-right: 2rem; }
+    .sidebar h3 { margin-top: 0; }
+    .main-content { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .template-card { border: 1px solid #ddd; padding: 1rem; text-align: center; cursor: pointer; }
+    .template-card img { width: 100%; height: auto; }
+    .tabs { display: flex; gap: 1rem; padding: 1rem 2rem; border-bottom: 2px solid #eee; }
+    .tab { cursor: pointer; padding: 0.5rem 1rem; border: 1px solid #ccc; border-bottom: none; border-radius: 6px 6px 0 0; background: #f9f9f9; }
+    .tab.active { background: white; font-weight: bold; }
+    .filter-link { cursor: pointer; color: blue; text-decoration: underline; }
   </style>
 </head>
-
 <body>
-  <nav class="gradient-bg text-white p-4">
-    <div class="flex justify-between items-center">
-      <h1 class="text-2xl font-bold">BoothBiz</h1>
-      <div class="space-x-4">
-        <a href="#" class="hover:underline">Dashboard</a>
-        <a href="#" class="hover:underline">Templates</a>
-        <a href="#" class="hover:underline">Analytics</a>
-        <a href="#" class="hover:underline">Settings</a>
+  <header>
+    <h1>Photo Booth Templates</h1>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('templates')">Templates</div>
+    <div class="tab" onclick="showTab('reels')">Instagram Reels</div>
+  </div>
+
+  <div id="templates" class="container">
+    <div class="sidebar">
+      <h3>Filters</h3>
+      <ul>
+        <li><span class="filter-link" onclick="filterTemplates('Square')">Square</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('4x6')">4x6</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('6x4')">6x4</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('2x6')">2x6</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Instagram Story')">Instagram Story</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Instagram Post')">Instagram Post</span></li>
+      </ul>
+      <h3>Categories</h3>
+      <ul>
+        <li><span class="filter-link" onclick="filterTemplates('Wedding')">Wedding</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Prom')">Prom</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Corporate')">Corporate</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Homecoming')">Homecoming</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Seasonal')">Seasonal</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Sports')">Sports</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Trading Cards')">Trading Cards</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Theme')">Theme</span></li>
+        <li><span class="filter-link" onclick="filterTemplates('Universal')">Universal</span></li>
+      </ul>
+    </div>
+    <div class="main-content" id="templateGallery">
+      <div class="template-card" data-tags="Square Wedding" onclick="window.open('https://www.canva.com/design/DAGZGClNxWU/ldsSmxTZ6K4hrS74wM72_Q/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 1">
+        <p>Template 1</p>
+      </div>
+      <div class="template-card" data-tags="4x6 Prom" onclick="window.open('https://www.canva.com/design/DAGfNcWa8zM/53atEgLsT6cw0OJvwmv6dA/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 2">
+        <p>Template 2</p>
+      </div>
+      <div class="template-card" data-tags="Instagram Post Corporate" onclick="window.open('https://www.canva.com/design/DAGmoRZs63w/607rf2fjSvWK_1gkorMY5w/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 3">
+        <p>Template 3</p>
+      </div>
+      <div class="template-card" data-tags="6x4 Sports" onclick="window.open('https://www.canva.com/design/DAGmEGdyHuM/n_wBLQEFWq1GVB4K8m44Hg/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 4">
+        <p>Template 4</p>
+      </div>
+      <div class="template-card" data-tags="2x6 Trading Cards" onclick="window.open('https://www.canva.com/design/DAGgxVW-A0c/pzlDpdChKAxeykcSF7sQxQ/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 5">
+        <p>Template 5</p>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <main class="container mx-auto p-6">
-    <h2 class="text-3xl font-semibold mb-4">Photo Booth Business Dashboard</h2>
-
-    <!-- Tabs -->
-    <div class="mb-4 border-b">
-      <button class="tab-link border-b-2 border-indigo-600 text-indigo-600 p-2 mr-2" data-tab="assistant">AI Assistant</button>
-      <button class="tab-link border-b-2 border-transparent hover:border-gray-300 p-2 mr-2" data-tab="templates">Templates</button>
-      <button class="tab-link border-b-2 border-transparent hover:border-gray-300 p-2 mr-2" data-tab="integrations">Integrations</button>
+  <div id="reels" class="container" style="display:none;">
+    <div style="width: 100%;">
+      <h2>Create Your Instagram Reel</h2>
+      <p>Upload a short video to apply our branded overlay and export a reel-ready template.</p>
+      <input type="file" accept="video/*" />
     </div>
-
-    <!-- Assistant Tab -->
-    <div class="tab-content active" id="assistant">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">AI Assistant</h3>
-        <p class="mb-4 text-gray-600">Ask questions, get responses, and manage your business.</p>
-        <div id="chat-container" class="border rounded-lg p-4 h-64 overflow-y-auto flex flex-col mb-4">
-          <div class="chat-message bot-message">Hello! I'm your Photo Booth Assistant. How can I help?</div>
-        </div>
-        <div class="flex">
-          <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 border px-4 py-2 rounded-l-lg" />
-          <button id="send-btn" class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700">Send</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Templates Tab -->
-    <div class="tab-content" id="templates">
-      <h3 class="text-xl font-semibold mb-4">Editable Canva Templates</h3>
-<div class="mb-6">
-  <label for="template-folder" class="block text-lg font-medium text-gray-700 mb-2">
-    Browse & Customize Templates:
-  </label>
-  <select id="template-folder" class="border rounded px-4 py-2 w-full md:w-1/2" onchange="openCanvaFolder(this)">
-    <option value="">Select Template Format</option>
-    <option value="https://www.canva.com/folder/FAFovI9pa7E">All Templates (Square, 4x6, IG Post, etc.)</option>
-  </select>
-</div>
-
-<script>
-  function openCanvaFolder(select) {
-    const url = select.value;
-    if (url) {
-      window.open(url, '_blank');
-      select.selectedIndex = 0;
-    }
-  }
-</script>
-
-      </div>
-    </div>
-
-    <!-- Integrations Tab -->
-    <div class="tab-content" id="integrations">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Integrations</h3>
-        <p class="text-gray-600">Canva, BoothBook, Snappic, and more integrations will be available soon.</p>
-      </div>
-    </div>
-
-    <!-- Tally Lead Form Section -->
-    <section id="lead-form" class="mt-10">
-      <h2 class="text-2xl font-semibold mb-4">Join the Photo Booth AI Community</h2>
-      <iframe data-tally-src="https://tally.so/embed/3qMAQ5?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-              loading="lazy" width="100%" height="1521" frameborder="0" 
-              marginheight="0" marginwidth="0" 
-              title="Lead generation form"></iframe>
-
-      <script>
-        var d=document,
-            w="https://tally.so/widgets/embed.js",
-            v=function(){
-              "undefined"!=typeof Tally?Tally.loadEmbeds():
-              d.querySelectorAll("iframe[data-tally-src]:not([src])")
-              .forEach(function(e){e.src=e.dataset.tallySrc});
-            };
-        if("undefined"!=typeof Tally) v();
-        else if(d.querySelector('script[src="'+w+'"]')==null){
-          var s=d.createElement("script");
-          s.src=w;
-          s.onload=v;
-          s.onerror=v;
-          d.body.appendChild(s);
-        }
-      </script>
-    </section>
-  </main>
-
-  <footer class="bg-gray-800 text-white text-center py-4">
-    <p>&copy; 2025 BoothBiz. All rights reserved.</p>
-  </footer>
+  </div>
 
   <script>
-    // Tab switching
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        tabLinks.forEach(btn => btn.classList.remove('border-indigo-600', 'text-indigo-600'));
-        tabContents.forEach(tab => tab.classList.remove('active'));
-
-        link.classList.add('border-indigo-600', 'text-indigo-600');
-        document.getElementById(link.dataset.tab).classList.add('active');
-      });
-    });
-
-    // Chat simulation
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-    const chatContainer = document.getElementById('chat-container');
-
-    function sendMessage() {
-      const message = chatInput.value.trim();
-      if (message) {
-        const userDiv = document.createElement('div');
-        userDiv.className = 'chat-message user-message';
-        userDiv.textContent = message;
-        chatContainer.appendChild(userDiv);
-        chatInput.value = '';
-
-        setTimeout(() => {
-          const botDiv = document.createElement('div');
-          botDiv.className = 'chat-message bot-message';
-          botDiv.textContent = "Thanks for your message. I'm processing that now.";
-          chatContainer.appendChild(botDiv);
-          chatContainer.scrollTop = chatContainer.scrollHeight;
-        }, 800);
-      }
+    function showTab(tabId) {
+      document.getElementById('templates').style.display = tabId === 'templates' ? 'flex' : 'none';
+      document.getElementById('reels').style.display = tabId === 'reels' ? 'flex' : 'none';
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
     }
 
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') sendMessage();
-    });
+    function filterTemplates(tag) {
+      const cards = document.querySelectorAll('.template-card');
+      cards.forEach(card => {
+        card.style.display = card.getAttribute('data-tags').includes(tag) ? 'block' : 'none';
+      });
+    }
   </script>
-
-  <!-- Chatbase GPT Assistant -->
-  <script src="https://www.chatbase.co/embed.min.js" 
-          botId="5p51vCe_ZK8eyWPJprEBC" 
-          domain="www.chatbase.co" 
-          defer></script>
 </body>
 </html>
