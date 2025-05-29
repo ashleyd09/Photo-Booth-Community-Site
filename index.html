@@ -93,30 +93,92 @@
       </div>
     </div>
 
-   <div class="tab-content" id="templates">
+<div class="tab-content" id="templates">
   <h3 class="text-xl font-semibold mb-4">Editable Canva Templates</h3>
 
   <!-- Tabs -->
-  <div class="tabs mb-4">
-    <div class="tab active" onclick="showTab('templateGallery')">Templates</div>
-    <div class="tab" onclick="showTab('reelsTab')">Instagram Reels</div>
+  <div class="tabs mb-4 flex space-x-4">
+    <div class="tab active cursor-pointer px-4 py-2 bg-indigo-600 text-white rounded" onclick="showTab('templateGallery')">Templates</div>
+    <div class="tab cursor-pointer px-4 py-2 bg-gray-200 text-gray-800 rounded" onclick="showTab('reelsTab')">Instagram Reels</div>
   </div>
 
   <!-- Filter + Gallery Layout -->
-  <div id="templateGallery" class="container">
-    <div class="sidebar">
-      <h3>Filters</h3>
-      <ul>
-        <li><span class="filter-link" onclick="filterTemplates('Square')">Square</span></li>
-        <li><span class="filter-link" onclick="filterTemplates('4x6')">4x6</span></li>
-        <li><span class="filter-link" onclick="filterTemplates('6x4')">6x4</span></li>
-        <li><span class="filter-link" onclick="filterTemplates('2x6')">2x6</span></li>
-        <li><span class="filter-link" onclick="filterTemplates('Instagram Story')">Instagram Story</span></li>
-        <li><span class="filter-link" onclick="filterTemplates('Instagram Post')">Instagram Post</span></li>
+  <div id="templateGallery" class="flex">
+    <div class="w-1/4 pr-4">
+      <h3 class="font-semibold mb-2">Filters</h3>
+      <ul class="space-y-2">
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Square')">Square</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('4x6')">4x6</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('6x4')">6x4</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('2x6')">2x6</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Instagram Story')">Instagram Story</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Instagram Post')">Instagram Post</span></li>
       </ul>
-      <h3>Categories</h3>
-      <ul>
-        <li><span class="filter-link" onclick="filterTemplates('Wedding')">Wedding</span></li>
+      <h3 class="font-semibold mt-6 mb-2">Categories</h3>
+      <ul class="space-y-2">
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Wedding')">Wedding</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Prom')">Prom</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Corporate')">Corporate</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Homecoming')">Homecoming</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Seasonal')">Seasonal</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Sports')">Sports</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Trading Cards')">Trading Cards</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Theme')">Theme</span></li>
+        <li><span class="filter-link cursor-pointer text-blue-600" onclick="filterTemplates('Universal')">Universal</span></li>
+      </ul>
+    </div>
+
+    <div class="w-3/4 grid grid-cols-2 gap-6">
+      <div class="template-card bg-white rounded shadow p-4" data-tags="Square Wedding" onclick="window.open('https://www.canva.com/design/DAGZGClNxWU/ldsSmxTZ6K4hrS74wM72_Q/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 1" class="mb-2 rounded">
+        <p class="text-center">Template 1</p>
+      </div>
+      <div class="template-card bg-white rounded shadow p-4" data-tags="4x6 Prom" onclick="window.open('https://www.canva.com/design/DAGfNcWa8zM/53atEgLsT6cw0OJvwmv6dA/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 2" class="mb-2 rounded">
+        <p class="text-center">Template 2</p>
+      </div>
+      <div class="template-card bg-white rounded shadow p-4" data-tags="Instagram Post Corporate" onclick="window.open('https://www.canva.com/design/DAGmoRZs63w/607rf2fjSvWK_1gkorMY5w/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 3" class="mb-2 rounded">
+        <p class="text-center">Template 3</p>
+      </div>
+      <div class="template-card bg-white rounded shadow p-4" data-tags="6x4 Sports" onclick="window.open('https://www.canva.com/design/DAGmEGdyHuM/n_wBLQEFWq1GVB4K8m44Hg/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 4" class="mb-2 rounded">
+        <p class="text-center">Template 4</p>
+      </div>
+      <div class="template-card bg-white rounded shadow p-4" data-tags="2x6 Trading Cards" onclick="window.open('https://www.canva.com/design/DAGgxVW-A0c/pzlDpdChKAxeykcSF7sQxQ/edit', '_blank')">
+        <img src="https://via.placeholder.com/200x200" alt="Template 5" class="mb-2 rounded">
+        <p class="text-center">Template 5</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="reelsTab" class="hidden mt-4">
+    <div class="bg-white p-6 rounded shadow w-full">
+      <h2 class="text-xl font-semibold mb-2">Create Your Instagram Reel</h2>
+      <p class="mb-4">Upload a short video to apply our branded overlay and export a reel-ready template.</p>
+      <input type="file" accept="video/*" class="border p-2 rounded w-full" />
+    </div>
+  </div>
+</div>
+
+<script>
+  function showTab(tabId) {
+    document.getElementById('templateGallery').classList.add('hidden');
+    document.getElementById('reelsTab').classList.add('hidden');
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('bg-indigo-600', 'text-white'));
+
+    document.getElementById(tabId).classList.remove('hidden');
+    document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('bg-indigo-600', 'text-white');
+  }
+
+  function filterTemplates(tag) {
+    const cards = document.querySelectorAll('.template-card');
+    cards.forEach(card => {
+      card.style.display = card.getAttribute('data-tags').includes(tag) ? 'block' : 'none';
+    });
+  }
+</script>
+
         <li><span class="filter-link" onclick="filterTemplates('Prom')">Prom</span></li>
         <li><span class="filter-link" onclick="filterTemplates('Corporate')">Corporate</span></li>
         <li><span class="filter-link" onclick="filterTemplates('Homecoming')">Homecoming</span></li>
