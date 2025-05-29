@@ -1,35 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Booth Templates</title>
-  <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; }
-    header { background: #fff; padding: 1rem 2rem; border-bottom: 1px solid #ccc; }
-    .container { display: flex; padding: 2rem; }
-    .sidebar { width: 250px; margin-right: 2rem; }
-    .sidebar h3 { margin-top: 0; }
-    .main-content { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
-    .template-card { border: 1px solid #ddd; padding: 1rem; text-align: center; cursor: pointer; }
-    .template-card img { width: 100%; height: auto; }
-    .tabs { display: flex; gap: 1rem; padding: 1rem 2rem; border-bottom: 2px solid #eee; }
-    .tab { cursor: pointer; padding: 0.5rem 1rem; border: 1px solid #ccc; border-bottom: none; border-radius: 6px 6px 0 0; background: #f9f9f9; }
-    .tab.active { background: white; font-weight: bold; }
-    .filter-link { cursor: pointer; color: blue; text-decoration: underline; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Photo Booth Templates</h1>
-  </header>
+<div class="tab-content" id="templates">
+  <h3 class="text-xl font-semibold mb-4">Editable Canva Templates</h3>
 
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('templates')">Templates</div>
-    <div class="tab" onclick="showTab('reels')">Instagram Reels</div>
+  <!-- Tabs -->
+  <div class="tabs mb-4">
+    <div class="tab active" onclick="showTab('templateGallery')">Templates</div>
+    <div class="tab" onclick="showTab('reelsTab')">Instagram Reels</div>
   </div>
 
-  <div id="templates" class="container">
+  <!-- Filter + Gallery Layout -->
+  <div id="templateGallery" class="container">
     <div class="sidebar">
       <h3>Filters</h3>
       <ul>
@@ -53,7 +32,8 @@
         <li><span class="filter-link" onclick="filterTemplates('Universal')">Universal</span></li>
       </ul>
     </div>
-    <div class="main-content" id="templateGallery">
+
+    <div class="main-content">
       <div class="template-card" data-tags="Square Wedding" onclick="window.open('https://www.canva.com/design/DAGZGClNxWU/ldsSmxTZ6K4hrS74wM72_Q/edit', '_blank')">
         <img src="https://via.placeholder.com/200x200" alt="Template 1">
         <p>Template 1</p>
@@ -77,28 +57,28 @@
     </div>
   </div>
 
-  <div id="reels" class="container" style="display:none;">
+  <div id="reelsTab" class="container" style="display: none;">
     <div style="width: 100%;">
       <h2>Create Your Instagram Reel</h2>
       <p>Upload a short video to apply our branded overlay and export a reel-ready template.</p>
       <input type="file" accept="video/*" />
     </div>
   </div>
+</div>
 
-  <script>
-    function showTab(tabId) {
-      document.getElementById('templates').style.display = tabId === 'templates' ? 'flex' : 'none';
-      document.getElementById('reels').style.display = tabId === 'reels' ? 'flex' : 'none';
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
-    }
+<script>
+  function showTab(tabId) {
+    document.getElementById('templateGallery').style.display = tabId === 'templateGallery' ? 'flex' : 'none';
+    document.getElementById('reelsTab').style.display = tabId === 'reelsTab' ? 'flex' : 'none';
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+  }
 
-    function filterTemplates(tag) {
-      const cards = document.querySelectorAll('.template-card');
-      cards.forEach(card => {
-        card.style.display = card.getAttribute('data-tags').includes(tag) ? 'block' : 'none';
-      });
-    }
-  </script>
-</body>
-</html>
+  function filterTemplates(tag) {
+    const cards = document.querySelectorAll('.template-card');
+    cards.forEach(card => {
+      card.style.display = card.getAttribute('data-tags').includes(tag) ? 'block' : 'none';
+    });
+  }
+</script>
+
